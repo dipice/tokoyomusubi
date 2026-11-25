@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr" class="w">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tokoyui Shrine: Prier, Omikuji</title>
+<meta name="description" content="Tokoyui Shrine (Tokoyo Musubi Shrine) est une application pour se rendre au sanctuaire : révérence, yeux fermés, prière. De la Porte Torii, par le Chemin d’accès, jusqu’au Haiden et au Bureau du Shrine. Tirez une Divination Kotonoha et apposez un sceau de saison dans votre Carnet Sanpai.">
+<link rel="canonical" href="https://dipice.github.io/tokoyomusubi/fr/">
+<link rel="alternate" hreflang="en" href="https://dipice.github.io/tokoyomusubi/">
+<link rel="alternate" hreflang="ja" href="https://dipice.github.io/tokoyomusubi/ja/">
+<link rel="alternate" hreflang="zh-Hant" href="https://dipice.github.io/tokoyomusubi/zh-TW/">
+<link rel="alternate" hreflang="id" href="https://dipice.github.io/tokoyomusubi/id/">
+<link rel="alternate" hreflang="es" href="https://dipice.github.io/tokoyomusubi/es/">
+<link rel="alternate" hreflang="th" href="https://dipice.github.io/tokoyomusubi/th/">
+<link rel="alternate" hreflang="de" href="https://dipice.github.io/tokoyomusubi/de/">
+<link rel="alternate" hreflang="fr" href="https://dipice.github.io/tokoyomusubi/fr/">
+<link rel="alternate" hreflang="pl" href="https://dipice.github.io/tokoyomusubi/pl/">
+<link rel="alternate" hreflang="pt" href="https://dipice.github.io/tokoyomusubi/pt/">
+<link rel="alternate" hreflang="ms" href="https://dipice.github.io/tokoyomusubi/ms/">
+<link rel="alternate" hreflang="x-default" href="https://dipice.github.io/tokoyomusubi/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tokoyui Shrine">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://dipice.github.io/tokoyomusubi/fr/">
+<meta property="og:title" content="Tokoyui Shrine: Prier, Omikuji">
+<meta property="og:description" content="Le monde change. Le cœur et la prière demeurent.">
+<meta property="og:image" content="https://dipice.github.io/tokoyomusubi/assets/cm-poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#efeae0">
+<meta name="apple-itunes-app" content="app-id=6756700198">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Tokoyui Shrine", "alternateName": ["Tokoyo Musubi Shrine", "常世結神社", "Tokoyui"], "url": "https://dipice.github.io/tokoyomusubi/fr/", "image": "https://dipice.github.io/tokoyomusubi/assets/cm-poster.jpg", "description": "Révérence, yeux fermés, prière. Un sanctuaire à visiter, avec ses omikuji.", "applicationCategory": "LifestyleApplication", "operatingSystem": "iOS, Android", "inLanguage": "fr", "installUrl": ["https://apps.apple.com/app/id6756700198", "https://play.google.com/store/apps/details?id=com.dicepixel.shrine_jp"]}
+</script>
+
+<style>
+:root{
+  --paper:#efeae0; --paper-hi:#f7f3ea; --ink:#221e1b; --ink-soft:#6a6259;
+  --ai:#16213d;            /* 常世の藍（影） */
+  --ai-deep:#0d1428;
+  --shu:#b3352b;
+  --dusk:#170f0a;          /* 目を閉じた暗さ（CMと同じ茶） */
+  --spring:#e06db5; --summer:#2f7f8a; --autumn:#b8452e; --winter:#3b4f7a;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+  --ease:cubic-bezier(.22,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--mincho);color:var(--ink);background:var(--paper);line-height:1.9;
+  font-feature-settings:"palt";overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+
+/* ───────── 題字（最初の画面） ───────── */
+.first{height:430vh !important;--z:clamp(0,calc(var(--q,0) / .2),1);--x:clamp(0,calc((var(--q,0) - .19) / .07),1)}
+.hero{position:absolute;inset:0;z-index:9;color:var(--ink);opacity:calc(1 - var(--x));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.2vh;
+  background:radial-gradient(120% 90% at 50% 35%,var(--paper-hi),var(--paper) 70%,#e4ddd0)}
+.hero{padding-bottom:var(--gap)}
+.first.on .hero{pointer-events:none}
+.langpick{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;z-index:6;font-size:12px;color:var(--ink-soft);
+  font-family:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;letter-spacing:.06em}
+.langpick summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.45em;padding:.45em .7em;border-radius:2px;
+  transition:color .3s}
+.langpick summary::-webkit-details-marker{display:none}
+.langpick summary::after{content:"";width:5px;height:5px;border-right:1px solid;border-bottom:1px solid;transform:translateY(-2px) rotate(45deg);
+  transition:transform .3s var(--ease)}
+.langpick[open] summary::after{transform:translateY(1px) rotate(225deg)}
+.langpick summary:hover,.langpick[open] summary{color:var(--ink)}
+.langlist{position:absolute;right:0;top:100%;margin-top:4px;min-width:176px;padding:.5em 0;background:rgba(247,243,234,.97);
+  border:1px solid rgba(106,98,89,.35);box-shadow:0 18px 36px -18px rgba(22,33,61,.55);display:flex;flex-direction:column}
+.langlist a{padding:.5em 1.1em;text-decoration:none;color:var(--ink-soft);white-space:nowrap;transition:background .25s,color .25s}
+.langlist a:hover{background:rgba(34,30,27,.06);color:var(--ink)}
+.langlist a[aria-current]{color:var(--ink)}
+.langlist a[aria-current]::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--shu);margin:0 .6em .15em -.2em}
+.fade{opacity:calc(1 - var(--z) * 6)}
+.title{position:relative;width:min(74vw,520px);aspect-ratio:1191/210}
+.title img{position:absolute;inset:0;width:100%;height:100%}
+.title .main{animation:settle-main 1.7s var(--ease) both}
+.title .ghost{opacity:0;animation:settle-ghost 1.7s var(--ease) both}
+.title .ghost.l{--dx:-22px}.title .ghost.r{--dx:22px}
+@keyframes settle-main{0%{opacity:0;filter:blur(5px)}55%{opacity:.85;filter:blur(1px)}100%{opacity:1;filter:none}}
+@keyframes settle-ghost{0%{opacity:0;transform:translateX(var(--dx));filter:blur(4px)}
+  30%{opacity:.42}100%{opacity:0;transform:none;filter:blur(0)}}
+.rule{width:min(56vw,380px);height:1.5px;background:var(--ink);transform-origin:center;
+  animation:rule 1.2s .7s var(--ease) both;margin-top:-1.2vh}
+@keyframes rule{from{transform:scaleX(0)}to{transform:none}}
+.latin{font-family:"Hoefler Text","Times New Roman",serif;font-size:clamp(15px,2.2vw,20px);letter-spacing:.04em;
+  margin-top:-1.6vh;animation:rise 1.2s 1s var(--ease) both}
+.yomi{font-size:12px;letter-spacing:.5em;color:var(--ink-soft);margin-top:-2vh;animation:rise 1.2s 1.15s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+
+.device{position:relative;z-index:2;animation:rise 1.4s 1.3s var(--ease) both}
+.phone{position:relative;height:min(40vh,360px);aspect-ratio:9/19.2;border:5px solid rgba(27,24,21,calc(1 - var(--z)));border-radius:calc(26px - var(--z) * 22px);
+  overflow:hidden;background:#111;box-shadow:0 18px 40px -18px rgba(22,33,61,.55);
+  transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--s,1));transform-origin:50% 50%;will-change:transform}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  transition:opacity 1s ease;transform:scale(1.04)}
+.phone img.on{opacity:1;animation:drift 6s linear both}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.12)}}
+.hero .seal{position:absolute;z-index:3;right:-74px;bottom:8%;width:96px;height:96px}
+.seal{background:var(--seal,var(--spring));-webkit-mask:var(--img) center/contain no-repeat;mask:var(--img) center/contain no-repeat}
+.seal.stamp{animation:stamp .6s both}
+@keyframes stamp{
+  0%{opacity:0;transform:scale(1.36) rotate(calc(var(--rot,-5deg) - 4deg));filter:blur(3px);animation-timing-function:cubic-bezier(.45,0,.85,.35)}
+  55%{opacity:.8;transform:scale(1) rotate(var(--rot,-5deg));filter:blur(0);animation-timing-function:ease-out}
+  100%{opacity:.92;transform:scale(1) rotate(var(--rot,-5deg));filter:blur(0)}}
+.tag{font-size:clamp(15px,2.1vw,19px);letter-spacing:.22em;text-align:center;animation:rise 1.4s 1.7s var(--ease) both}
+.cue{position:absolute;bottom:calc(22px + var(--gap));left:50%;width:1px;height:44px;background:linear-gradient(var(--ink),transparent);
+  transform-origin:top;animation:cue 2.4s 2.6s ease-in-out infinite both}
+@keyframes cue{0%{transform:scaleY(0);opacity:0}40%{transform:scaleY(1);opacity:.7}100%{transform:scaleY(1) translateY(18px);opacity:0}}
+
+/* ───────── 場面（鳥居・参道・授与所・拝殿） ───────── */
+.scene{height:230vh;position:relative;color:#fbf6ea}
+.scene{--gap:0px}
+@supports (height:100lvh){.scene{--gap:calc(100lvh - 100svh)}}
+.scene .stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ai-deep)}
+.scene .bg{position:absolute;inset:-8%;background:center/cover no-repeat;filter:blur(34px) saturate(.8);opacity:.75;
+  transform:scale(1.1)}
+.scene .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(22,33,61,.55),rgba(13,20,40,.8))}
+.scene .frame{position:absolute;inset:0;overflow:hidden}
+.scene .frame>img,.scene .frame>video{width:100%;height:100%;object-fit:cover;
+  transform:scale(calc(1.02 + var(--q,0) * .1));will-change:transform}
+.scene .frame::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(13,20,40,.92) 0,rgba(13,20,40,.55) 26%,transparent 56%)}
+.copy{position:absolute;left:0;right:0;bottom:var(--gap);padding:0 28px max(3.5svh,26px);max-width:560px}
+.copy>*{opacity:0;transform:translateY(16px);filter:blur(6px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+.on .copy>*{opacity:1;transform:none;filter:none}
+.on .copy>:nth-child(2){transition-delay:.18s}.on .copy>:nth-child(3){transition-delay:.36s}.on .copy>:nth-child(4){transition-delay:.54s}
+.place{font-size:12px;letter-spacing:.6em;color:#e9d9b4;display:flex;align-items:center;gap:12px}
+.place::before{content:"";width:26px;height:1px;background:currentColor}
+.copy h2{font-weight:600;font-size:clamp(23px,3.6vw,34px);letter-spacing:.12em;line-height:1.6;margin:.5em 0 .5em}
+.copy p{font-size:15px;letter-spacing:.06em;color:#e8e2d4}
+.note{font-size:12.5px !important;color:#bfc4d2 !important;margin-top:.8em}
+.techo{float:right;width:92px;margin:0 0 10px 14px;border-radius:3px;box-shadow:0 12px 24px -10px rgba(13,20,40,.8)}
+
+@media (min-width:900px){
+  .scene .stage{display:grid;grid-template-columns:1fr 1fr;align-items:center;justify-items:center;padding:0 6vw}
+  .scene .frame{position:relative;inset:auto;height:min(80vh,860px);aspect-ratio:3/4;
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);
+    -webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);
+    mask-composite:intersect}
+  .scene .frame::after{display:none}
+  .copy{position:relative;padding:0 0 0 4vw;max-width:480px}
+  .scene.flip .frame{order:2}.scene.flip .copy{padding:0 4vw 0 0}
+  .techo{float:none;width:150px;margin:0 0 4vh}
+}
+
+/* 場面の出入り：藍に沈む／藍から現れる */
+.veil{position:absolute;inset:0;z-index:8;background:var(--ai-deep);pointer-events:none;opacity:0}
+.veil-in .veil{opacity:calc(1 - clamp(0,calc(var(--q,0) / .07),1))}
+.veil-out .veil{opacity:clamp(0,calc((var(--q,0) - .9) / .09),1)}
+
+/* 拝殿：目を閉じる → 授与所：目を開ける */
+.honden{height:560vh;--lid:clamp(0,calc((var(--q,0) - .4) / .13),1);
+  --word:calc(clamp(0,calc((var(--q,0) - .55) / .05),1) - clamp(0,calc((var(--q,0) - .92) / .05),1))}
+.juyosho{height:400vh;--lid:calc(1 - clamp(0,calc((var(--q,0) - .02) / .12),1));--word:0;
+  --wake:clamp(0,calc((var(--q,0) - .9) / .09),1)}
+.lid{position:absolute;left:0;right:0;height:62%;z-index:3;pointer-events:none}
+.lid.t{top:0;background:linear-gradient(var(--dusk) 78%,transparent);transform:translateY(calc((var(--lid) - 1) * 100%))}
+.lid.b{bottom:0;background:linear-gradient(to top,var(--dusk) 78%,transparent);transform:translateY(calc((1 - var(--lid)) * 100%))}
+.dusk{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:var(--lid);background:var(--dusk)}
+.glow{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:var(--word);
+  background:radial-gradient(60% 45% at 50% 50%,#3a2415 0,transparent 75%)}
+.motes{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:var(--word)}
+.motes i{position:absolute;width:var(--s);height:var(--s);border-radius:50%;left:var(--x);top:var(--y);
+  background:radial-gradient(#ffe6b0,rgba(255,220,160,0) 70%);animation:mote var(--d) ease-in-out infinite alternate}
+@keyframes mote{from{transform:translate(0,0);opacity:.15}to{transform:translate(var(--mx),-26px);opacity:.75}}
+.word{position:absolute;inset:0 0 var(--gap);z-index:6;display:grid;place-content:center;text-align:center;pointer-events:none;
+  opacity:var(--word);filter:blur(calc((1 - var(--word)) * 8px));color:#fbf6ea}
+.word b{font-weight:600;font-size:clamp(26px,4.4vw,40px);letter-spacing:.42em;padding-left:.42em}
+.word small{font-family:"Hoefler Text","Times New Roman",serif;font-size:13px;letter-spacing:.08em;opacity:.7;margin-top:.6em}
+.wake{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:var(--wake);
+  background:radial-gradient(120% 90% at 50% 35%,var(--paper-hi),var(--paper) 70%)}
+
+/* ───────── 霧（場面のつなぎ目に付いて動く） ───────── */
+.mist{--fog:#131c33;position:absolute;left:0;top:-38vh;top:-38lvh;width:100%;height:76vh;height:76lvh;z-index:20;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(transparent,#000 34%,#000 66%,transparent);mask-image:linear-gradient(transparent,#000 34%,#000 66%,transparent)}
+.mist::before,.mist::after{content:"";position:absolute;inset:0 -50%;
+  background:
+    radial-gradient(40% 46% at 20% 50%,var(--fog) 30%,transparent 72%),
+    radial-gradient(46% 52% at 52% 46%,var(--fog) 34%,transparent 74%),
+    radial-gradient(40% 44% at 82% 54%,var(--fog) 30%,transparent 72%),
+    linear-gradient(transparent 18%,var(--fog) 40%,var(--fog) 60%,transparent 82%);
+  animation:fog 38s linear infinite alternate}
+.mist::after{opacity:.6;animation-duration:54s;animation-direction:alternate-reverse}
+@keyframes fog{from{transform:translateX(-18%)}to{transform:translateX(18%)}}
+
+/* ───────── 紙の場面（映像・結び） ───────── */
+.sheet{position:relative;padding:16vh 24px;text-align:center;
+  background:radial-gradient(120% 90% at 50% 35%,var(--paper-hi),var(--paper) 70%)}
+.sheet.between::before,.sheet.between::after{content:"";position:absolute;left:0;right:0;height:30vh;pointer-events:none}
+.sheet.between::before{top:0;background:linear-gradient(var(--ai-deep),rgba(13,20,40,.72) 22%,rgba(22,33,61,.3) 55%,transparent)}
+.sheet.between::after{bottom:0;background:linear-gradient(to top,var(--ai-deep),rgba(13,20,40,.72) 22%,rgba(22,33,61,.3) 55%,transparent)}
+.sheet.between{padding:38vh 24px}
+.sheet h2{font-weight:600;font-size:clamp(21px,3.2vw,30px);letter-spacing:.2em}
+.sheet .lead{color:var(--ink-soft);font-size:14px;letter-spacing:.12em;margin-top:.8em}
+.reveal{opacity:0;transform:translateY(18px);filter:blur(6px);transition:all 1.1s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+.film{position:relative;width:min(100%,860px);aspect-ratio:16/9;margin:6vh auto 0;border:0;padding:0;cursor:pointer;
+  background:#000 center/cover no-repeat;box-shadow:0 30px 60px -30px rgba(22,33,61,.6);display:block;overflow:hidden}
+.film video,.film iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.film .play{position:absolute;left:50%;top:50%;width:74px;height:74px;margin:-37px;border-radius:50%;
+  border:1px solid #fbf6ea;background:rgba(22,33,61,.45);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  transition:transform .5s var(--ease)}
+.film .play::after{content:"";position:absolute;left:30px;top:24px;border:13px solid transparent;border-left:20px solid #fbf6ea;border-right:0}
+.film:hover .play{transform:scale(1.08)}
+
+.end{padding-top:14vh;padding-bottom:16vh}
+.film-lead{margin-top:12vh !important}
+.end .film{margin-top:3vh}
+.end .seal{width:132px;height:132px;margin:5vh auto 0;opacity:0;cursor:pointer}
+.end .seal.stamp{opacity:.92}
+.sekki{font-size:12px;letter-spacing:.3em;color:var(--ink-soft);margin-top:1.6em}
+.stores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6vh}
+.stores a{text-decoration:none;border:1px solid var(--ink);padding:.8em 2em;letter-spacing:.18em;font-size:15px;
+  transition:background .4s,color .4s}
+.stores a:hover{background:var(--ink);color:var(--paper)}
+.stores.mini{margin-top:0;gap:8px;animation:rise 1.4s 2s var(--ease) both}
+.stores.mini a{border:0;padding:0 .4em;font-size:12px;color:var(--ink-soft);letter-spacing:.1em}
+.stores.mini a{background:none;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.45em;
+  transition:color .4s,text-decoration-color .4s}
+.stores.mini a:hover{background:none;color:var(--ink);text-decoration-color:currentColor}
+footer{padding:6vh 24px 8vh;text-align:center;font-size:12.5px;color:var(--ink-soft);background:var(--paper)}
+footer .aka{font-size:11.5px;letter-spacing:.12em;opacity:.8;margin-top:.3em}
+footer .langs{margin:2.2em auto 0;max-width:640px;gap:.5em 1.3em;font-size:12px}
+footer .langs a{text-decoration:none;opacity:.75}
+footer .langs a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:.4em}
+footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-bottom:1.6em}
+
+/* 日本語・繁体字以外：欧文などの組み方 */
+html.w{font-feature-settings:normal}
+html.w body{font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Hoefler Text",Georgia,"Noto Serif","Noto Serif Thai","Thonburi",serif;line-height:1.65}
+html.w .latin{font-size:clamp(21px,3.2vw,30px);letter-spacing:.03em;font-family:inherit}
+html.w .yomi{font-size:12.5px;letter-spacing:.14em;margin-top:-2.2vh}
+html.w .tag{letter-spacing:.05em;line-height:1.6}
+html.w .place{letter-spacing:.26em;text-transform:uppercase;font-size:11px}
+html.w .copy h2{letter-spacing:.005em;line-height:1.28;font-size:clamp(25px,3.6vw,36px);font-weight:500}
+html.w .copy p{letter-spacing:.005em;font-size:15.5px;line-height:1.6}
+html.w .copy h2,html.w .sheet h2,html.w .sekki,html.w .tag{text-wrap:balance}
+html.w .copy p{text-wrap:pretty}
+html.w .word b{letter-spacing:.1em;padding-left:.1em;font-weight:500}
+html.w .word small{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.4em}
+html.w .sheet h2{letter-spacing:.03em;font-weight:500}
+html.w .sheet .lead,html.w .sekki{letter-spacing:.04em;font-size:14px}
+html.w .stores a{letter-spacing:.08em}
+html.w footer{letter-spacing:.01em}
+
+html.zh body{font-family:"Songti TC","Noto Serif TC","PMingLiU","Hiragino Mincho ProN","Yu Mincho",serif}
+html.th body{font-family:"Noto Serif Thai","Thonburi","Sukhumvit Set","Leelawadee UI",serif;line-height:1.8}
+html.th .copy h2{line-height:1.5;font-size:clamp(23px,3.4vw,33px)}
+html.th .copy p{line-height:1.75}
+.nb{white-space:nowrap}
+html.th .latin,html.th .yomi{font-family:"Iowan Old Style",Palatino,Georgia,serif}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .scene,.honden,.juyosho,.first{height:auto !important}.scene .stage{position:relative}
+  .first .stage{height:auto;display:block}.hero{position:relative;min-height:100svh;opacity:1}
+  .first .frame{position:relative;height:100svh}.veil,.glow{display:none}
+  .copy>*,.reveal,.film-lead{margin-top:12vh !important}
+.end .film{margin-top:3vh}
+.end .seal{opacity:1;transform:none;filter:none}
+  .mist,.lid,.dusk,.motes,.word,.wake,.cue{display:none}
+  .title .main{opacity:1}
+}
+</style>
+</head>
+<body>
+
+
+<main>
+<!-- 題字 → 鳥居（スマホが広がって、そのまま鳥居の前になる） -->
+<section class="scene first" data-track data-on=".3">
+  <div class="stage">
+    <header class="hero">
+    <details class="langpick fade">
+      <summary aria-label="Language"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.800 0 18M12 3c-3 3.200-3 14.800 0 18"/></g></svg><span>Français</span></summary>
+      <nav class="langlist" aria-label="Language"><a href="../" lang="en" data-lang="en">English</a><a href="../ja/" lang="ja" data-lang="ja">日本語</a><a href="../zh-TW/" lang="zh-Hant" data-lang="zh-TW">繁體中文</a><a href="../id/" lang="id" data-lang="id">Bahasa Indonesia</a><a href="../es/" lang="es" data-lang="es">Español</a><a href="../th/" lang="th" data-lang="th">ไทย</a><a href="../de/" lang="de" data-lang="de">Deutsch</a><a href="../fr/" lang="fr" data-lang="fr" aria-current="page">Français</a><a href="../pl/" lang="pl" data-lang="pl">Polski</a><a href="../pt/" lang="pt" data-lang="pt">Português</a><a href="../ms/" lang="ms" data-lang="ms">Bahasa Melayu</a></nav>
+    </details>
+    <h1 class="title fade">
+      <img class="ghost l" src="../assets/title.png" alt="" aria-hidden="true">
+      <img class="ghost r" src="../assets/title.png" alt="" aria-hidden="true">
+      <img class="main" src="../assets/title.png" alt="Tokoyui Shrine (常世結神社)" width="1191" height="210">
+    </h1>
+    <div class="rule fade"></div>
+    <p class="latin fade">Tokoyui Shrine</p>
+    <p class="yomi fade">Tokoyo Musubi Shrine</p>
+    <div class="device">
+      <div class="phone" id="phone">
+        <img src="../assets/torii_poster.jpg" alt="Écran de la Porte Torii" class="on">
+        <img src="../assets/sando.jpg" alt="Écran du Chemin d’accès">
+        <img src="../assets/juyosho.jpg" alt="Écran du Bureau du Shrine">
+        <img src="../assets/honden.jpg" alt="Écran du Haiden">
+      </div>
+      <div class="seal fade" id="heroSeal" aria-hidden="true"></div>
+    </div>
+    <p class="tag fade">Le monde change.<br>Le cœur et la prière demeurent.</p>
+    <p class="stores mini fade"><a href="https://apps.apple.com/app/id6756700198">App Store</a>・<a href="https://play.google.com/store/apps/details?id=com.dicepixel.shrine_jp">Google Play</a></p>
+    <span class="cue fade" aria-hidden="true"></span>
+    </header>
+    <div class="bg" style="background-image:url(../assets/torii_poster.jpg)"></div>
+    <div class="frame"><video src="../assets/torii_loop.mp4" poster="../assets/torii_poster.jpg" muted loop playsinline preload="none"></video></div>
+    <div class="copy">
+      <p class="place">Porte Torii</p>
+      <h2>Venir quand<br>on le souhaite.</h2>
+      <p>Inclinez-vous devant la Porte Torii et entrez dans l’enceinte.<br>Votre visite commence ici.</p>
+      <p class="note">La caméra reconnaît votre révérence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 参道 -->
+<section class="scene flip" data-track data-seam>
+  <div class="mist" aria-hidden="true"></div>
+  <div class="stage">
+    <div class="bg" style="background-image:url(../assets/sando.jpg)"></div>
+    <div class="frame"><img src="../assets/sando.jpg" alt="Le Chemin d’accès dans la brume" loading="lazy"></div>
+    <div class="copy">
+      <p class="place">Chemin d’accès</p>
+      <h2>Au-delà de la brume,<br>le Haiden.</h2>
+      <p>Un chemin paisible parmi de grands cèdres.<br>Ici, il arrive d’échanger quelques mots avec la jeune fille.</p>
+    </div>
+    <div class="veil"></div>
+  </div>
+</section>
+
+<!-- 拝殿 -->
+<section class="scene honden" data-track data-seam data-off=".36">
+  <div class="mist" aria-hidden="true"></div>
+  <div class="stage">
+    <div class="bg" style="background-image:url(../assets/honden.jpg)"></div>
+    <div class="frame"><video src="../assets/honden_loop.mp4" poster="../assets/honden_poster.jpg" muted loop playsinline preload="none"></video></div>
+    <div class="copy">
+      <p class="place">Haiden</p>
+      <h2>Déposez une offrande.<br>Deux révérences, deux claquements de mains, une révérence.</h2>
+      <p>Révérence, yeux fermés, prière.<br>Ici, la visite se fait par vos propres gestes.</p>
+      <p class="note">La caméra reconnaît les révérences et les yeux fermés ; les claquements se font en touchant l’écran.</p>
+    </div>
+    <div class="veil"></div>
+    <div class="lid t"></div><div class="lid b"></div><div class="dusk"></div><div class="glow"></div>
+    <div class="motes" id="motes"></div>
+    <p class="word"><b>Fermez les yeux</b><small>目を閉じて</small></p>
+  </div>
+</section>
+
+<!-- 授与所 -->
+<section class="scene juyosho flip" data-track data-on=".15" data-off=".9">
+  <div class="stage">
+    <div class="bg" style="background-image:url(../assets/juyosho.jpg)"></div>
+    <div class="frame"><video src="../assets/juyosho_loop.mp4" poster="../assets/juyosho_poster.jpg" muted loop playsinline preload="none"></video></div>
+    <div class="copy">
+      <img class="techo" src="../assets/techo.jpg" alt="Carnet Sanpai" loading="lazy">
+      <p class="place">Bureau du Shrine</p>
+      <h2>Divination Kotonoha<br>et Carnet Sanpai.</h2>
+      <p>Après la prière, tirez une Divination Kotonoha.<br>À chaque visite, un sceau de saison s’ajoute à votre carnet.</p>
+    </div>
+    <div class="lid t"></div><div class="lid b"></div><div class="dusk"></div>
+    <div class="wake"></div>
+  </div>
+</section>
+
+<!-- 結び -->
+<section class="sheet end">
+  <h2 class="reveal">Puis retourner à son quotidien.</h2>
+  <div class="seal" id="endSeal" role="img" aria-label="Sceau de saison"></div>
+  <p class="sekki reveal" id="sekki"></p>
+  <p class="lead reveal film-lead">Un film de trente secondes</p>
+  <button class="film reveal" id="film" style="background-image:url(../assets/cm-poster.jpg)" aria-label="Lire le film">
+    <span class="play"></span>
+  </button>
+  <p class="stores reveal">
+    <a href="https://apps.apple.com/app/id6756700198">App Store</a>
+    <a href="https://play.google.com/store/apps/details?id=com.dicepixel.shrine_jp">Google Play</a>
+  </p>
+
+</section>
+</main>
+
+<footer>
+  <nav>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/support.html">Assistance</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/terms-of-service.html">Conditions d’utilisation</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/privacy-policy.html">Politique de confidentialité</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/tokutei.html">Mentions commerciales (Japon)</a>
+  </nav>
+  <p>Tokoyui Shrine</p>
+  <p class="aka">Tokoyo Musubi Shrine 常世結神社</p>
+  <nav class="langs" aria-label="Language"><a href="../" lang="en" data-lang="en">English</a><a href="../ja/" lang="ja" data-lang="ja">日本語</a><a href="../zh-TW/" lang="zh-Hant" data-lang="zh-TW">繁體中文</a><a href="../id/" lang="id" data-lang="id">Bahasa Indonesia</a><a href="../es/" lang="es" data-lang="es">Español</a><a href="../th/" lang="th" data-lang="th">ไทย</a><a href="../de/" lang="de" data-lang="de">Deutsch</a><a href="../fr/" lang="fr" data-lang="fr" aria-current="page">Français</a><a href="../pl/" lang="pl" data-lang="pl">Polski</a><a href="../pt/" lang="pt" data-lang="pt">Português</a><a href="../ms/" lang="ms" data-lang="ms">Bahasa Melayu</a></nav>
+</footer>
+
+
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const sealImg = n => `url(../assets/shuin_${n}.png)`;
+
+  /* 題字の画面：印の拍で境内が巡る（立春→夏至→立秋→冬至） */
+  const beats = [['risshun','--spring'],['geshi','--summer'],['risshu','--autumn'],['toji','--winter']];
+  const shots = [...document.querySelectorAll('#phone img')];
+  const heroSeal = document.getElementById('heroSeal');
+  const hero = document.querySelector('.first');
+  const phone = document.getElementById('phone'), firstFrame = hero.querySelector('.frame'), firstStage = hero.querySelector('.stage');
+  let geo = null;
+  function measure() {            /* スマホが広がって鳥居の絵に重なるための寸法 */
+    const keep = phone.style.transform; phone.style.transform = 'none';
+    const st = firstStage.getBoundingClientRect(), p = phone.getBoundingClientRect(), f = firstFrame.getBoundingClientRect();
+    phone.style.transform = keep;
+    const wide = innerWidth >= 900;
+    geo = { dx: (f.left + f.width / 2) - (p.left + p.width / 2), dy: (f.top + f.height / 2) - (p.top + p.height / 2),
+            s: wide ? f.height / p.height : Math.max(f.width / p.width, f.height / p.height) * 1.02 };
+  }
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let beat = 0;
+  /* 押すたびに傾きを少し変える（アプリの手帖と同じ幅） */
+  const MAX_TILT = 15;
+  const tilt = el => el.style.setProperty('--rot', ((Math.random() * 2 - 1) * MAX_TILT).toFixed(1) + 'deg');
+  function setBeat(i) {
+    shots.forEach((s, k) => s.classList.toggle('on', k === i));
+    heroSeal.style.setProperty('--img', sealImg(beats[i][0]));
+    heroSeal.style.setProperty('--seal', `var(${beats[i][1]})`);
+    tilt(heroSeal); heroSeal.classList.remove('stamp'); void heroSeal.offsetWidth; heroSeal.classList.add('stamp');
+  }
+  setBeat(0);
+  if (!still) setInterval(() => {
+    if (parseFloat(hero.style.getPropertyValue('--q') || 0) > .015) { if (beat !== 0) setBeat(beat = 0); return; }
+    setBeat(beat = (beat + 1) % 4);
+  }, 2600);
+
+  /* スクロールの進み具合を各場面へ渡す／霧をつなぎ目に付ける */
+  const tracks = [...document.querySelectorAll('[data-track]')];
+  let ticking = false;
+  function frame() {
+    ticking = false;
+    const vh = innerHeight;
+    for (const el of tracks) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 2) continue;
+      const q = clamp(-r.top / (r.height - vh));
+      el.style.setProperty('--q', q.toFixed(4));
+      if (el === hero) {
+        if (q > .015 && beat !== 0) setBeat(beat = 0);
+        if (!geo) measure();
+        const e = ease(clamp(q / .2));
+        phone.style.transform = `translate(${(geo.dx * e).toFixed(1)}px,${(geo.dy * e).toFixed(1)}px) scale(${(1 + (geo.s - 1) * e).toFixed(4)})`;
+      }
+      if (el.classList.contains('scene')) {
+        const on = parseFloat(el.dataset.on || .06), off = parseFloat(el.dataset.off || 2);
+        el.classList.toggle('on', q > on && q < off);
+      }
+    }
+  }
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  if (!still) { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', () => { geo = null; onScroll(); }); frame(); }
+  else document.querySelectorAll('.scene').forEach(s => s.classList.add('on'));
+
+  /* 見えている間だけ動画を動かす */
+  const vio = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    e.isIntersecting && !still ? v.play().catch(() => {}) : v.pause();
+  }), { threshold: .2 });
+  document.querySelectorAll('.scene video').forEach(v => vio.observe(v));
+
+  /* 現れ方 */
+  const rio = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
+  }), { threshold: .3 });
+  document.querySelectorAll('.reveal').forEach(el => rio.observe(el));
+
+  /* 目を閉じたときの光の粒 */
+  const motes = document.getElementById('motes');
+  for (let i = 0; i < 18; i++) {
+    const m = document.createElement('i');
+    m.style.cssText = `--x:${Math.random()*100}%;--y:${Math.random()*100}%;--s:${6+Math.random()*16}px;` +
+      `--d:${4+Math.random()*6}s;--mx:${(Math.random()*40-20).toFixed(0)}px;animation-delay:-${Math.random()*8}s`;
+    motes.appendChild(m);
+  }
+
+  /* 言語メニュー：選んだ言語を覚える */
+  document.querySelectorAll('a[data-lang]').forEach(a => a.addEventListener('click', () => {
+    try { localStorage.setItem('tm_lang', a.dataset.lang); } catch (e) {}
+  }));
+
+  /* 冒頭の言語メニュー：外を押したら閉じる */
+  const pick = document.querySelector('.langpick');
+  document.addEventListener('click', e => { if (pick.open && !pick.contains(e.target)) pick.open = false; });
+
+  /* 映像：押されてから読み込む */
+  const film = document.getElementById('film');
+  film.addEventListener('click', () => {
+    film.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/OgiObRPImBU?autoplay=1&rel=0&playsinline=1" title="Un film de trente secondes" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    film.style.cursor = 'default';
+  }, { once: true });
+
+  /* 結び：印は題字と同じ4つだけ（季節に合うもの）。今日の節気は名前だけ伝える */
+  const L = {"sekki": ["Petit froid", "Grand froid", "Début du printemps", "Eau de pluie", "Éveil des insectes", "Équinoxe de printemps", "Clarté et lumière", "Pluie des grains", "Début de l’été", "Petite plénitude", "Grains en épi", "Solstice d’été", "Petite chaleur", "Grande chaleur", "Début de l’automne", "Fin de la chaleur", "Rosée blanche", "Équinoxe d’automne", "Rosée froide", "Descente du givre", "Début de l’hiver", "Petite neige", "Grande neige", "Solstice d’hiver"], "sealLine": "Venez aujourd’hui, et le sceau « {name} » sera apposé."};
+  const sekkiDays = [[1,5,3],[1,20,3],[2,4,0],[2,19,0],[3,5,0],[3,20,0],[4,5,0],[4,20,0],[5,5,1],[5,21,1],[6,6,1],[6,21,1],
+    [7,7,1],[7,23,1],[8,7,2],[8,23,2],[9,8,2],[9,23,2],[10,8,2],[10,23,2],[11,7,3],[11,22,3],[12,7,3],[12,22,3]];
+  const sekki = sekkiDays.map((d, i) => [d[0], d[1], L.sekki[i], d[2]]);
+  const now = new Date(), key = (now.getMonth() + 1) * 100 + now.getDate();
+  let cur = sekki[sekki.length - 1];
+  for (const k of sekki) if (k[0] * 100 + k[1] <= key) cur = k;
+  const endSeal = document.getElementById('endSeal');
+  endSeal.style.setProperty('--img', sealImg(beats[cur[3]][0]));
+  endSeal.style.setProperty('--seal', `var(${beats[cur[3]][1]})`);
+  document.getElementById('sekki').textContent = L.sealLine.replace('{name}', cur[2]);
+  const press = () => { tilt(endSeal); endSeal.classList.remove('stamp'); void endSeal.offsetWidth; endSeal.classList.add('stamp'); };
+  new IntersectionObserver((es, o) => es.forEach(e => {
+    if (e.isIntersecting) { setTimeout(press, 700); o.disconnect(); }
+  }), { threshold: .8 }).observe(endSeal);
+  endSeal.addEventListener('click', press);
+})();
+</script>
+</body>
+</html>

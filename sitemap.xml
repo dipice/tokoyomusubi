@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://dipice.github.io/tokoyomusubi/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/ja/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/zh-TW/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/id/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/es/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/th/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/de/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/fr/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/pl/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/pt/</loc></url>
+  <url><loc>https://dipice.github.io/tokoyomusubi/ms/</loc></url>
 </urlset>

@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en" class="w">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>常世結神社｜参拝とおみくじ</title>
-<meta name="description" content="常世結神社（とこよむすびじんじゃ）は、お辞儀をして、目を閉じて祈るお参りのアプリです。鳥居から参道、拝殿、授与所へ。言ノ葉みくじを引き、参拝手帖に季節の印を押します。">
+<title>Tokoyui Shrine: Visit, Omikuji</title>
+<meta name="description" content="Tokoyui Shrine (Tokoyo Musubi Shrine) is an app for visiting a shrine: bow, close your eyes, and pray. From the Torii Gate along the Approach Path to the Haiden and the Shrine Office. Draw a Kotonoha Fortune and place a seasonal seal in your Sanpai Notebook.">
 <link rel="canonical" href="https://dipice.github.io/tokoyomusubi/">
+<link rel="alternate" hreflang="en" href="https://dipice.github.io/tokoyomusubi/">
+<link rel="alternate" hreflang="ja" href="https://dipice.github.io/tokoyomusubi/ja/">
+<link rel="alternate" hreflang="zh-Hant" href="https://dipice.github.io/tokoyomusubi/zh-TW/">
+<link rel="alternate" hreflang="id" href="https://dipice.github.io/tokoyomusubi/id/">
+<link rel="alternate" hreflang="es" href="https://dipice.github.io/tokoyomusubi/es/">
+<link rel="alternate" hreflang="th" href="https://dipice.github.io/tokoyomusubi/th/">
+<link rel="alternate" hreflang="de" href="https://dipice.github.io/tokoyomusubi/de/">
+<link rel="alternate" hreflang="fr" href="https://dipice.github.io/tokoyomusubi/fr/">
+<link rel="alternate" hreflang="pl" href="https://dipice.github.io/tokoyomusubi/pl/">
+<link rel="alternate" hreflang="pt" href="https://dipice.github.io/tokoyomusubi/pt/">
+<link rel="alternate" hreflang="ms" href="https://dipice.github.io/tokoyomusubi/ms/">
+<link rel="alternate" hreflang="x-default" href="https://dipice.github.io/tokoyomusubi/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="常世結神社">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Tokoyui Shrine">
+<meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://dipice.github.io/tokoyomusubi/">
-<meta property="og:title" content="常世結神社｜参拝とおみくじ">
-<meta property="og:description" content="変わりゆく世界。変わらない 心と祈り。">
+<meta property="og:title" content="Tokoyui Shrine: Visit, Omikuji">
+<meta property="og:description" content="A changing world. A steady heart, and prayer.">
 <meta property="og:image" content="https://dipice.github.io/tokoyomusubi/assets/cm-poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
@@ -21,13 +33,9 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MobileApplication","name":"常世結神社",
-"alternateName":["Tokoyo Musubi Shrine","とこよむすびじんじゃ","とこゆいさん","Tokoyui"],
-"url":"https://dipice.github.io/tokoyomusubi/","image":"https://dipice.github.io/tokoyomusubi/assets/cm-poster.jpg",
-"description":"お辞儀をして、目を閉じて祈るお参りのアプリ。言ノ葉みくじを引き、参拝手帖に季節の印を押します。",
-"applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","inLanguage":"ja",
-"installUrl":["https://apps.apple.com/app/id6756700198","https://play.google.com/store/apps/details?id=com.dicepixel.shrine_jp"]}
+{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Tokoyui Shrine", "alternateName": ["Tokoyo Musubi Shrine", "常世結神社", "Tokoyui"], "url": "https://dipice.github.io/tokoyomusubi/", "image": "https://dipice.github.io/tokoyomusubi/assets/cm-poster.jpg", "description": "Bow, close your eyes, and pray. A shrine to visit, with omikuji to draw.", "applicationCategory": "LifestyleApplication", "operatingSystem": "iOS, Android", "inLanguage": "en", "installUrl": ["https://apps.apple.com/app/id6756700198", "https://play.google.com/store/apps/details?id=com.dicepixel.shrine_jp"]}
 </script>
+<script>(function(){try{var m={"ja": "ja/", "zh-hant": "zh-TW/", "id": "id/", "es": "es/", "th": "th/", "de": "de/", "fr": "fr/", "pl": "pl/", "pt": "pt/", "ms": "ms/"},s=localStorage.getItem('tm_lang');if(s){if(s!=='en'){for(var k in m)if(m[k]===s+'/'){location.replace(m[k]);return}}return}var n=navigator.languages||[navigator.language||''];for(var i=0;i<n.length;i++){var l=n[i].toLowerCase(),b=l.split('-')[0];if(b==='en')return;if(b==='zh'){if(/hant|tw|hk|mo/.test(l)&&m['zh-hant']){location.replace(m['zh-hant'])}return}if(m[b]){location.replace(m[b]);return}}}catch(e){}})();</script>
 <style>
 :root{
   --paper:#efeae0; --paper-hi:#f7f3ea; --ink:#221e1b; --ink-soft:#6a6259;
@@ -54,6 +62,21 @@ a{color:inherit}
   background:radial-gradient(120% 90% at 50% 35%,var(--paper-hi),var(--paper) 70%,#e4ddd0)}
 .hero{padding-bottom:var(--gap)}
 .first.on .hero{pointer-events:none}
+.langpick{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;z-index:6;font-size:12px;color:var(--ink-soft);
+  font-family:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;letter-spacing:.06em}
+.langpick summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.45em;padding:.45em .7em;border-radius:2px;
+  transition:color .3s}
+.langpick summary::-webkit-details-marker{display:none}
+.langpick summary::after{content:"";width:5px;height:5px;border-right:1px solid;border-bottom:1px solid;transform:translateY(-2px) rotate(45deg);
+  transition:transform .3s var(--ease)}
+.langpick[open] summary::after{transform:translateY(1px) rotate(225deg)}
+.langpick summary:hover,.langpick[open] summary{color:var(--ink)}
+.langlist{position:absolute;right:0;top:100%;margin-top:4px;min-width:176px;padding:.5em 0;background:rgba(247,243,234,.97);
+  border:1px solid rgba(106,98,89,.35);box-shadow:0 18px 36px -18px rgba(22,33,61,.55);display:flex;flex-direction:column}
+.langlist a{padding:.5em 1.1em;text-decoration:none;color:var(--ink-soft);white-space:nowrap;transition:background .25s,color .25s}
+.langlist a:hover{background:rgba(34,30,27,.06);color:var(--ink)}
+.langlist a[aria-current]{color:var(--ink)}
+.langlist a[aria-current]::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--shu);margin:0 .6em .15em -.2em}
 .fade{opacity:calc(1 - var(--z) * 6)}
 .title{position:relative;width:min(74vw,520px);aspect-ratio:1191/210}
 .title img{position:absolute;inset:0;width:100%;height:100%}
@@ -205,7 +228,35 @@ a{color:inherit}
 .stores.mini a:hover{background:none;color:var(--ink);text-decoration-color:currentColor}
 footer{padding:6vh 24px 8vh;text-align:center;font-size:12.5px;color:var(--ink-soft);background:var(--paper)}
 footer .aka{font-size:11.5px;letter-spacing:.12em;opacity:.8;margin-top:.3em}
+footer .langs{margin:2.2em auto 0;max-width:640px;gap:.5em 1.3em;font-size:12px}
+footer .langs a{text-decoration:none;opacity:.75}
+footer .langs a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:.4em}
 footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-bottom:1.6em}
+
+/* 日本語・繁体字以外：欧文などの組み方 */
+html.w{font-feature-settings:normal}
+html.w body{font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Hoefler Text",Georgia,"Noto Serif","Noto Serif Thai","Thonburi",serif;line-height:1.65}
+html.w .latin{font-size:clamp(21px,3.2vw,30px);letter-spacing:.03em;font-family:inherit}
+html.w .yomi{font-size:12.5px;letter-spacing:.14em;margin-top:-2.2vh}
+html.w .tag{letter-spacing:.05em;line-height:1.6}
+html.w .place{letter-spacing:.26em;text-transform:uppercase;font-size:11px}
+html.w .copy h2{letter-spacing:.005em;line-height:1.28;font-size:clamp(25px,3.6vw,36px);font-weight:500}
+html.w .copy p{letter-spacing:.005em;font-size:15.5px;line-height:1.6}
+html.w .copy h2,html.w .sheet h2,html.w .sekki,html.w .tag{text-wrap:balance}
+html.w .copy p{text-wrap:pretty}
+html.w .word b{letter-spacing:.1em;padding-left:.1em;font-weight:500}
+html.w .word small{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.4em}
+html.w .sheet h2{letter-spacing:.03em;font-weight:500}
+html.w .sheet .lead,html.w .sekki{letter-spacing:.04em;font-size:14px}
+html.w .stores a{letter-spacing:.08em}
+html.w footer{letter-spacing:.01em}
+
+html.zh body{font-family:"Songti TC","Noto Serif TC","PMingLiU","Hiragino Mincho ProN","Yu Mincho",serif}
+html.th body{font-family:"Noto Serif Thai","Thonburi","Sukhumvit Set","Leelawadee UI",serif;line-height:1.8}
+html.th .copy h2{line-height:1.5;font-size:clamp(23px,3.4vw,33px)}
+html.th .copy p{line-height:1.75}
+.nb{white-space:nowrap}
+html.th .latin,html.th .yomi{font-family:"Iowan Old Style",Palatino,Georgia,serif}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
@@ -228,34 +279,38 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
 <section class="scene first" data-track data-on=".3">
   <div class="stage">
     <header class="hero">
+    <details class="langpick fade">
+      <summary aria-label="Language"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.800 0 18M12 3c-3 3.200-3 14.800 0 18"/></g></svg><span>English</span></summary>
+      <nav class="langlist" aria-label="Language"><a href="./" lang="en" data-lang="en" aria-current="page">English</a><a href="ja/" lang="ja" data-lang="ja">日本語</a><a href="zh-TW/" lang="zh-Hant" data-lang="zh-TW">繁體中文</a><a href="id/" lang="id" data-lang="id">Bahasa Indonesia</a><a href="es/" lang="es" data-lang="es">Español</a><a href="th/" lang="th" data-lang="th">ไทย</a><a href="de/" lang="de" data-lang="de">Deutsch</a><a href="fr/" lang="fr" data-lang="fr">Français</a><a href="pl/" lang="pl" data-lang="pl">Polski</a><a href="pt/" lang="pt" data-lang="pt">Português</a><a href="ms/" lang="ms" data-lang="ms">Bahasa Melayu</a></nav>
+    </details>
     <h1 class="title fade">
       <img class="ghost l" src="assets/title.png" alt="" aria-hidden="true">
       <img class="ghost r" src="assets/title.png" alt="" aria-hidden="true">
-      <img class="main" src="assets/title.png" alt="常世結神社" width="1191" height="210">
+      <img class="main" src="assets/title.png" alt="Tokoyui Shrine (常世結神社)" width="1191" height="210">
     </h1>
     <div class="rule fade"></div>
-    <p class="latin fade">Tokoyo Musubi Shrine</p>
-    <p class="yomi fade">とこよむすびじんじゃ</p>
+    <p class="latin fade">Tokoyui Shrine</p>
+    <p class="yomi fade">Tokoyo Musubi Shrine</p>
     <div class="device">
       <div class="phone" id="phone">
-        <img src="assets/torii_poster.jpg" alt="鳥居の前の画面" class="on">
-        <img src="assets/sando.jpg" alt="参道の画面">
-        <img src="assets/juyosho.jpg" alt="授与所の画面">
-        <img src="assets/honden.jpg" alt="拝殿の画面">
+        <img src="assets/torii_poster.jpg" alt="The Torii Gate screen" class="on">
+        <img src="assets/sando.jpg" alt="The Approach Path screen">
+        <img src="assets/juyosho.jpg" alt="The Shrine Office screen">
+        <img src="assets/honden.jpg" alt="The Haiden screen">
       </div>
       <div class="seal fade" id="heroSeal" aria-hidden="true"></div>
     </div>
-    <p class="tag fade">変わりゆく世界。<br>変わらない 心と祈り。</p>
+    <p class="tag fade">A changing world.<br>A steady heart, and prayer.</p>
     <p class="stores mini fade"><a href="https://apps.apple.com/app/id6756700198">App Store</a>・<a href="https://play.google.com/store/apps/details?id=com.dicepixel.shrine_jp">Google Play</a></p>
     <span class="cue fade" aria-hidden="true"></span>
     </header>
     <div class="bg" style="background-image:url(assets/torii_poster.jpg)"></div>
     <div class="frame"><video src="assets/torii_loop.mp4" poster="assets/torii_poster.jpg" muted loop playsinline preload="none"></video></div>
     <div class="copy">
-      <p class="place">鳥居</p>
-      <h2>来たいときに、<br>訪れる。</h2>
-      <p>鳥居の前でお辞儀をして、境内へ。<br>お参りは、ここから始まります。</p>
-      <p class="note">お辞儀はカメラが受けとめます。</p>
+      <p class="place">Torii Gate</p>
+      <h2>Come whenever<br>you wish.</h2>
+      <p>Bow before the Torii Gate and step into the grounds.<br>Your visit begins here.</p>
+      <p class="note">Your bow is sensed by the camera.</p>
     </div>
   </div>
 </section>
@@ -265,11 +320,11 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
   <div class="mist" aria-hidden="true"></div>
   <div class="stage">
     <div class="bg" style="background-image:url(assets/sando.jpg)"></div>
-    <div class="frame"><img src="assets/sando.jpg" alt="霧のかかる参道" loading="lazy"></div>
+    <div class="frame"><img src="assets/sando.jpg" alt="The Approach Path in the mist" loading="lazy"></div>
     <div class="copy">
-      <p class="place">参道</p>
-      <h2>霧の向こうに、<br>拝殿。</h2>
-      <p>杉木立に囲まれた、静かな参道。<br>ここで、少女と言葉を交わすこともあります。</p>
+      <p class="place">Approach Path</p>
+      <h2>Beyond the mist,<br>the Haiden.</h2>
+      <p>A quiet path among tall cedars.<br>Here, you may exchange a few words with the girl.</p>
     </div>
     <div class="veil"></div>
   </div>
@@ -282,15 +337,15 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
     <div class="bg" style="background-image:url(assets/honden.jpg)"></div>
     <div class="frame"><video src="assets/honden_loop.mp4" poster="assets/honden_poster.jpg" muted loop playsinline preload="none"></video></div>
     <div class="copy">
-      <p class="place">拝殿</p>
-      <h2>お賽銭を納め、<br>二拝二拍手一拝。</h2>
-      <p>お辞儀をして、目を閉じて祈る。<br>ここでのお参りは、からだの所作で行います。</p>
-      <p class="note">お辞儀と目を閉じる動作はカメラで、拍手は画面に触れて行います。</p>
+      <p class="place">Haiden</p>
+      <h2>Make an offering.<br>Two bows, two claps, one bow.</h2>
+      <p>Bow, close your eyes, and pray.<br>Here, a visit is made with your own gestures.</p>
+      <p class="note">Bows and closed eyes are sensed by the camera; claps are taps on the screen.</p>
     </div>
     <div class="veil"></div>
     <div class="lid t"></div><div class="lid b"></div><div class="dusk"></div><div class="glow"></div>
     <div class="motes" id="motes"></div>
-    <p class="word"><b>目を閉じて</b><small>Close your eyes.</small></p>
+    <p class="word"><b>Close your eyes</b><small>目を閉じて</small></p>
   </div>
 </section>
 
@@ -300,10 +355,10 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
     <div class="bg" style="background-image:url(assets/juyosho.jpg)"></div>
     <div class="frame"><video src="assets/juyosho_loop.mp4" poster="assets/juyosho_poster.jpg" muted loop playsinline preload="none"></video></div>
     <div class="copy">
-      <img class="techo" src="assets/techo.jpg" alt="参拝手帖" loading="lazy">
-      <p class="place">授与所</p>
-      <h2>言ノ葉みくじと、<br>参拝手帖。</h2>
-      <p>祈りのあとに、言ノ葉みくじを引く。<br>参拝のたびに、手帖へ季節の印がひとつ増えていきます。</p>
+      <img class="techo" src="assets/techo.jpg" alt="Sanpai Notebook" loading="lazy">
+      <p class="place">Shrine Office</p>
+      <h2>Kotonoha Fortune,<br>and the Sanpai Notebook.</h2>
+      <p>After your prayer, draw a Kotonoha Fortune.<br>With each visit, one more seasonal seal is added to your notebook.</p>
     </div>
     <div class="lid t"></div><div class="lid b"></div><div class="dusk"></div>
     <div class="wake"></div>
@@ -312,11 +367,11 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
 
 <!-- 結び -->
 <section class="sheet end">
-  <h2 class="reveal">また日々へと帰る。</h2>
-  <div class="seal" id="endSeal" role="img" aria-label="季節の印"></div>
+  <h2 class="reveal">And return to daily life.</h2>
+  <div class="seal" id="endSeal" role="img" aria-label="Seasonal seal"></div>
   <p class="sekki reveal" id="sekki"></p>
-  <p class="lead reveal film-lead">三十秒の映像</p>
-  <button class="film reveal" id="film" style="background-image:url(assets/cm-poster.jpg)" aria-label="映像を再生する">
+  <p class="lead reveal film-lead">A thirty-second film</p>
+  <button class="film reveal" id="film" style="background-image:url(assets/cm-poster.jpg)" aria-label="Play the film">
     <span class="play"></span>
   </button>
   <p class="stores reveal">
@@ -329,13 +384,14 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
 
 <footer>
   <nav>
-    <a href="https://dipice.github.io/TM_Shrine-privacy/support.html">サポート</a>
-    <a href="https://dipice.github.io/TM_Shrine-privacy/terms-of-service.html">利用規約</a>
-    <a href="https://dipice.github.io/TM_Shrine-privacy/privacy-policy.html">プライバシーポリシー</a>
-    <a href="https://dipice.github.io/TM_Shrine-privacy/tokutei.html">特定商取引法に基づく表記</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/support.html">Support</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/terms-of-service.html">Terms of Use</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/privacy-policy.html">Privacy Policy</a>
+    <a href="https://dipice.github.io/TM_Shrine-privacy/tokutei.html">Commercial Disclosure (Japan)</a>
   </nav>
-  <p>常世結神社 Tokoyo Musubi Shrine</p>
-  <p class="aka">とこゆいさん Tokoyui-san</p>
+  <p>Tokoyui Shrine</p>
+  <p class="aka">Tokoyo Musubi Shrine 常世結神社</p>
+  <nav class="langs" aria-label="Language"><a href="./" lang="en" data-lang="en" aria-current="page">English</a><a href="ja/" lang="ja" data-lang="ja">日本語</a><a href="zh-TW/" lang="zh-Hant" data-lang="zh-TW">繁體中文</a><a href="id/" lang="id" data-lang="id">Bahasa Indonesia</a><a href="es/" lang="es" data-lang="es">Español</a><a href="th/" lang="th" data-lang="th">ไทย</a><a href="de/" lang="de" data-lang="de">Deutsch</a><a href="fr/" lang="fr" data-lang="fr">Français</a><a href="pl/" lang="pl" data-lang="pl">Polski</a><a href="pt/" lang="pt" data-lang="pt">Português</a><a href="ms/" lang="ms" data-lang="ms">Bahasa Melayu</a></nav>
 </footer>
 
 
@@ -426,24 +482,34 @@ footer nav{display:flex;gap:1.6em;justify-content:center;flex-wrap:wrap;margin-b
     motes.appendChild(m);
   }
 
+  /* 言語メニュー：選んだ言語を覚える */
+  document.querySelectorAll('a[data-lang]').forEach(a => a.addEventListener('click', () => {
+    try { localStorage.setItem('tm_lang', a.dataset.lang); } catch (e) {}
+  }));
+
+  /* 冒頭の言語メニュー：外を押したら閉じる */
+  const pick = document.querySelector('.langpick');
+  document.addEventListener('click', e => { if (pick.open && !pick.contains(e.target)) pick.open = false; });
+
   /* 映像：押されてから読み込む */
   const film = document.getElementById('film');
   film.addEventListener('click', () => {
-    film.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/OgiObRPImBU?autoplay=1&rel=0&playsinline=1" title="常世結神社 30秒の映像" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    film.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/OgiObRPImBU?autoplay=1&rel=0&playsinline=1" title="A thirty-second film" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
     film.style.cursor = 'default';
   }, { once: true });
 
   /* 結び：印は題字と同じ4つだけ（季節に合うもの）。今日の節気は名前だけ伝える */
-  const sekki = [[1,5,'小寒',3],[1,20,'大寒',3],[2,4,'立春',0],[2,19,'雨水',0],[3,5,'啓蟄',0],[3,20,'春分',0],[4,5,'清明',0],[4,20,'穀雨',0],
-    [5,5,'立夏',1],[5,21,'小満',1],[6,6,'芒種',1],[6,21,'夏至',1],[7,7,'小暑',1],[7,23,'大暑',1],[8,7,'立秋',2],[8,23,'処暑',2],
-    [9,8,'白露',2],[9,23,'秋分',2],[10,8,'寒露',2],[10,23,'霜降',2],[11,7,'立冬',3],[11,22,'小雪',3],[12,7,'大雪',3],[12,22,'冬至',3]];
+  const L = {"sekki": ["Minor Cold", "Major Cold", "Start of Spring", "Rain Water", "Awakening of Insects", "Spring Equinox", "Clear and Bright", "Grain Rain", "Start of Summer", "Grain Buds", "Grain in Ear", "Summer Solstice", "Minor Heat", "Major Heat", "Start of Autumn", "End of Heat", "White Dew", "Autumn Equinox", "Cold Dew", "Frost's Descent", "Start of Winter", "Minor Snow", "Major Snow", "Winter Solstice"], "sealLine": "Visit today, and the “{name}” seal will be placed."};
+  const sekkiDays = [[1,5,3],[1,20,3],[2,4,0],[2,19,0],[3,5,0],[3,20,0],[4,5,0],[4,20,0],[5,5,1],[5,21,1],[6,6,1],[6,21,1],
+    [7,7,1],[7,23,1],[8,7,2],[8,23,2],[9,8,2],[9,23,2],[10,8,2],[10,23,2],[11,7,3],[11,22,3],[12,7,3],[12,22,3]];
+  const sekki = sekkiDays.map((d, i) => [d[0], d[1], L.sekki[i], d[2]]);
   const now = new Date(), key = (now.getMonth() + 1) * 100 + now.getDate();
   let cur = sekki[sekki.length - 1];
   for (const k of sekki) if (k[0] * 100 + k[1] <= key) cur = k;
   const endSeal = document.getElementById('endSeal');
   endSeal.style.setProperty('--img', sealImg(beats[cur[3]][0]));
   endSeal.style.setProperty('--seal', `var(${beats[cur[3]][1]})`);
-  document.getElementById('sekki').textContent = `今日お参りすると、「${cur[2]}」の印が押されます`;
+  document.getElementById('sekki').textContent = L.sealLine.replace('{name}', cur[2]);
   const press = () => { tilt(endSeal); endSeal.classList.remove('stamp'); void endSeal.offsetWidth; endSeal.classList.add('stamp'); };
   new IntersectionObserver((es, o) => es.forEach(e => {
     if (e.isIntersecting) { setTimeout(press, 700); o.disconnect(); }
